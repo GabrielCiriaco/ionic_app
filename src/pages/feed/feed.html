@@ -11,9 +11,13 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   
   <h1>Nome do usuário</h1>
-  <ion-card>
+  <ion-card *ngFor="let filme of lista_filmes">
 
     <ion-item>
 
@@ -21,38 +25,40 @@
         <img src="assets/imgs/perfil.jpeg">
       </ion-avatar>
 
-      <h2 class="feed_title">{{ nome_usuario}}</h2>
-      <p class="feed_date"> Mes, dia, ano</p>
+      <h2 class="feed_title">{{ filme.original_title}}</h2>
+      <p class="feed_date"> {{filme.release_date}}</p>
 
     </ion-item>
 
-    <img src="assets/imgs/IMG_7017.jpg">
+    <img [src]="'https://image.tmdb.org/t/p/w300/' + filme.backdrop_path">
 
     <ion-card-content>
-      <p>Texto qualquer que a pessoa tenha digitado para ser a descrição da imagem<p>
+      <p>{{filme.overview}}<p>
     </ion-card-content>
 
     <ion-row>
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="thumbs-up"></ion-icon>
-            <div> 12 likes</div>
+            <div>{{objeto_feed.qntd_likes}} Likes</div>
           </button>
         </ion-col>
 
         <ion-col>
           <button ion-button icon-left clear small>
             <ion-icon name="text"></ion-icon>
-            <div> 4 comentários</div>
+            <div>{{objeto_feed.qntd_comments}} Comments</div>
           </button>
         </ion-col>
 
         <ion-col center text-center>
           <ion-note>
-            11h ago
+            {{objeto_feed.time_comment}}
           </ion-note>
         </ion-col>
     </ion-row>
+
+    <button ion-button block (click)="abrirDetalhes(filme)">Detalhes</button>
 
   </ion-card>
 

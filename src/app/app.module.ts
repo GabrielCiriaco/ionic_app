@@ -12,7 +12,16 @@ import { FeedPageModule} from '../pages/feed/feed.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {HttpClientModule} from '@angular/common/http';
 import { IntroPageModule } from '../pages/intro/intro.module';
+import { MoovieProvider } from '../providers/moovie';
+import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
+import { SobrePage } from '../pages/sobre/sobre';
+import { PerfilPage } from '../pages/perfil/perfil';
+import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { SobrePageModule } from '../pages/sobre/sobre.module';
+import { PerfilPageModule } from '../pages/perfil/perfil.module';
+import { FilmeDetahesPageModule } from '../pages/filme-detahes/filme-detahes.module';
 
 
 @NgModule({
@@ -29,6 +38,11 @@ import { IntroPageModule } from '../pages/intro/intro.module';
     IonicModule.forRoot(MyApp),
     FeedPageModule,
     IntroPageModule,
+    HttpClientModule,
+    ConfiguracoesPageModule,
+    SobrePageModule,
+    PerfilPageModule,
+    FilmeDetahesPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +55,8 @@ import { IntroPageModule } from '../pages/intro/intro.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MoovieProvider
   ]
 })
 export class AppModule {}
