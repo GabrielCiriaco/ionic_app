@@ -3,11 +3,23 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Perfil</ion-title>
+    <ion-title> Meu Perfil</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="perfil">
+
+  <h1>Perfil</h1>
+  <img class="foto_perfil" src="../../assets/imgs/perfil.jpeg">
+
+  <h4>Nome:</h4>
+  <p>Gabriel Ciriaco Fornitano</p>
+  <h4>Idade:</h4>
+  <p>19 Anos</p>
+  <h4>Data de Nascimento:</h4>
+  <p>19 de fevereiro de 2002</p>
+  <h4>Profissão:</h4>
+  <p>Trainee de Projetos Asimov Jr</p>
   <img *ngIf="img" [src]="img" alt="">
   <button ion-button block (click)="tirarFoto()">Tirar Foto</button>
 </ion-content>
